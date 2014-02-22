@@ -9,7 +9,6 @@ import android.widget.Button;
 
 
 public class Main extends Activity {
-	
 	private Button getDealsButton;
 
 	@Override
@@ -23,12 +22,17 @@ public class Main extends Activity {
 			public void onClick(View arg0) {
 				System.out.println("button clicked");
 				//TODO Auto-generated method stub
-				//Http.getNewDeals();
+				display(Http.getNewDeals());
 			}
 		});
 
 		
 		
+	}
+
+	protected void display(String newDeals) {
+		System.out.println("Deal: " + newDeals.data.result.deal.en.short_title + "Store: " + newDeals.data.result.merchant.en.name + "Proximity" + newDeals.data.result.kilometers + "km" + "Expires: " + newDeals.data.result.deal.expires_at);		
+		root.getElementsByTagName("date").item(0).setTextContent("newValue");
 	}
 
 	@Override
