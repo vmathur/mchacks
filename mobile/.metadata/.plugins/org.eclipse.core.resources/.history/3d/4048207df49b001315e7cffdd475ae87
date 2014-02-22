@@ -1,12 +1,11 @@
 package com.vajy.dealme;
 
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
-
 
 public class Main extends Activity {
 	
@@ -24,7 +23,7 @@ public class Main extends Activity {
 			public void onClick(View arg0) {
 				System.out.println("button clicked");
 				// TODO Auto-generated method stub
-				Http.getNewDeals();
+				Http.getDeals();
 			}
 		});
 

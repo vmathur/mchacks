@@ -24,7 +24,7 @@ import android.os.Looper;
 public class Http 
 {
 	
-	private static String URL = "http://httpbin.org/get";
+	private static String URL = "url";
 	
 	public static String getNewDeals()
 	{
@@ -53,6 +53,7 @@ public class Http
 
 			
 		    return "yolo";
+		
 	}
 	
 	public static void sendJson(final String name1, final String value1, final String name2, final String value2, final String URL) 

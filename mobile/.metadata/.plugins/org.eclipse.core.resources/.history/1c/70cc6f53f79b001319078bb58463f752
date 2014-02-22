@@ -24,7 +24,7 @@ import android.os.Looper;
 public class Http 
 {
 	
-	private static String URL = "http://httpbin.org/get";
+	private static String URL = "url";
 	
 	public static String getNewDeals()
 	{
@@ -46,13 +46,11 @@ public class Http
 		        e.printStackTrace();
 		    }   
 			
-			System.out.println(response.getAllHeaders());
-			System.out.println(response.getParams());
-			System.out.println(response.getStatusLine());
-			System.out.println(response.getEntity());
-
+			response.getAllHeaders();
 			
-		    return "yolo";
+			return
+		    return response;
+		}
 	}
 	
 	public static void sendJson(final String name1, final String value1, final String name2, final String value2, final String URL) 

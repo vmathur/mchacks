@@ -24,7 +24,7 @@ import android.os.Looper;
 public class Http 
 {
 	
-	private static String URL = "http://httpbin.org/get";
+	private static String URL = "url";
 	
 	public static String getNewDeals()
 	{
