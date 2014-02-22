@@ -1,12 +1,29 @@
 package com.vajy.dealme;
 
+import java.io.File;
+import java.io.IOException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-
 
 public class Main extends Activity {
 	private Button getDealsButton;
@@ -25,14 +42,18 @@ public class Main extends Activity {
 				display(Http.getNewDeals());
 			}
 		});
-
-		
-		
 	}
 
-	protected void display(String newDeals) {
-		//System.out.println("Deal: " + newDeals.data.result.deal.en.short_title + "Store: " + newDeals.data.result.merchant.en.name + "Proximity" + newDeals.data.result.kilometers + "km" + "Expires: " + newDeals.data.result.deal.expires_at);		
-		//root.getElementsByTagName("date").item(0).setTextContent("newValue");
+	protected void display(JSONObject newDeals) {
+		//iniatilize xml reader
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = dbFactory.newDocumentBuilder();
+		Document doc = builder.parse(new File("results.xml"));  
+		Element root = doc.getDocumentElement(); 
+		
+		//update xml file with deal values
+		System.out.println("Deal: " + newDeals.data.result.deal.en.short_title + "Store: " + newDeals.data.result.merchant.en.name + "Proximity" + newDeals.data.result.kilometers + "km" + "Expires: " + newDeals.data.result.deal.expires_at);		
+		root.getElementsByTagName("results").item(0).setTextContent("Deal: " + newDeals.data.result.deal.en.short_title + "Store: " + newDeals.data.result.merchant.en.name + "Proximity" + newDeals.data.result.kilometers + "km" + "Expires: " + newDeals.data.result.deal.expires_at);
 	}
 
 	@Override
