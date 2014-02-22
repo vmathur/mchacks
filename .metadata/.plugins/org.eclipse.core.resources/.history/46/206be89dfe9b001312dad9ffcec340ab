@@ -20,9 +20,10 @@ public class Main extends Activity {
 		getDealsButton = (Button)findViewById(R.id.getdeals);
 		getDealsButton.setOnClickListener(new View.OnClickListener() 
 		{
+			@Override
 			public void onClick(View arg0) {
 				System.out.println("button clicked");
-				//TODO Auto-generated method stub
+				// TODO Auto-generated method stub
 				//Http.getNewDeals();
 			}
 		});

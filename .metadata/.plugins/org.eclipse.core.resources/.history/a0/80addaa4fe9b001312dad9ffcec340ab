@@ -22,7 +22,7 @@ public class Main extends Activity {
 		{
 			public void onClick(View arg0) {
 				System.out.println("button clicked");
-				//TODO Auto-generated method stub
+				// TODO Auto-generated method stub
 				//Http.getNewDeals();
 			}
 		});
