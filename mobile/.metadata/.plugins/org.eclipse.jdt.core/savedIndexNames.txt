@@ -1,4 +1,3 @@
 INDEX VERSION 1.126+C:\Users\ARTHUR\Documents\GitHub\mchacks\mobile\.metadata\.plugins\org.eclipse.jdt.core
-106621511.index
 129299257.index
 765655678.index
