@@ -31,8 +31,8 @@ public class Main extends Activity {
 	}
 
 	protected void display(String newDeals) {
-		System.out.println("Deal: " + newDeals.data.result.deal.en.short_title + "Store: " + newDeals.data.result.merchant.en.name + "Proximity" + newDeals.data.result.kilometers + "km" + "Expires: " + newDeals.data.result.deal.expires_at);		
-		root.getElementsByTagName("date").item(0).setTextContent("newValue");
+		//System.out.println("Deal: " + newDeals.data.result.deal.en.short_title + "Store: " + newDeals.data.result.merchant.en.name + "Proximity" + newDeals.data.result.kilometers + "km" + "Expires: " + newDeals.data.result.deal.expires_at);		
+		//root.getElementsByTagName("date").item(0).setTextContent("newValue");
 	}
 
 	@Override
