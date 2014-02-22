@@ -8,32 +8,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Main" >
 
-    <GridLayout
-        android:id="@+id/gridLayout1"
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/getdeals"
-        android:layout_marginRight="64dp"
-        android:layout_marginTop="122dp"
-        android:layout_toLeftOf="@+id/getdeals" >
-    </GridLayout>
+        android:text="i, i, i get itttt" />
 
     <Button
         android:id="@+id/getdeals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="101dp"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="16dp"
         android:text="Get Deals" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/getdeals"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="51dp"
-        android:ems="10" />
 
 </RelativeLayout>
