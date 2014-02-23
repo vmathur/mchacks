@@ -56,6 +56,9 @@ public class Main extends Activity {
 	}
 	
 	public static void display(JSONObject newDeals) throws ParserConfigurationException, SAXException, IOException, JSONException{
+		//change page
+		
+		
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = dbFactory.newDocumentBuilder();
 		Document doc = builder.parse(new File("result_page.xml"));  
