@@ -15,10 +15,36 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:text="Deal Me"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="50dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="140dp"
-        
         android:text="Discover hot local deals"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <NumberPicker
+        android:id="@+id/numberPicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/getdeals"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/getdeals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:text="Go" />
     
     
 
@@ -42,34 +68,7 @@
         android:layout_marginRight="24dp"
         android:text="km"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="52dp"
-        android:text="Deal Me"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="60dp" />
-
-    <NumberPicker
-        android:id="@+id/numberPicker1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/getdeals"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp" />
-
-    <Button
-        android:id="@+id/getdeals"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="48dp"
-        android:layout_toLeftOf="@+id/TextView02"
-        android:text="Go"
-        android:textSize="60dp" />	
+    
+    
 
 </RelativeLayout>

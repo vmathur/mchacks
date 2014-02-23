@@ -19,6 +19,16 @@
         
         android:text="Discover hot local deals"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/getdeals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="70dp"
+        android:text="Go" 
+        android:textSize="80dp"/>
     
     
 
@@ -61,15 +71,5 @@
         android:layout_above="@+id/getdeals"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="48dp" />
-
-    <Button
-        android:id="@+id/getdeals"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="48dp"
-        android:layout_toLeftOf="@+id/TextView02"
-        android:text="Go"
-        android:textSize="60dp" />	
 
 </RelativeLayout>
