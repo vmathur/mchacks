@@ -1,10 +1,5 @@
 com.android.ide.eclipse.adt.fixLegacyEditors=1
 com.android.ide.eclipse.adt.sdk=C\:\\Users\\ARTHUR\\Desktop\\adt-bundle-windows-x86_64-20131030\\sdk
-com.android.ide.eclipse.adt.xmlEditor=true
-<<<<<<< HEAD
 design.palette.flyout.width=233
-=======
-design.palette.flyout.width=358
->>>>>>> 5861de21c9456f6f81a2edf7ac04530cc6c2d64c
 design.structure.flyout.state=1
 eclipse.preferences.version=1
