@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item value="C:\Users\ARTHUR\Documents\GitHub\mchacks\mobile\DealMe\libs" key="org.eclipse.jdt.ui.lastextjar"/>
+	<item value="C:\Users\Josh\Downloads\adt-bundle-windows-x86_64-20131030\sdk\platforms\android-19" key="org.eclipse.jdt.ui.lastextjar"/>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item value="true" key="group_libraries"/>
 		<item value="false" key="linkWithEditor"/>
@@ -13,7 +13,7 @@
 	<section name="JavaElementSearchActions">
 	</section>
 	<section name="BuildPathsPropertyPage">
-		<item value="2" key="pageIndex"/>
+		<item value="3" key="pageIndex"/>
 	</section>
 	<section name="RefactoringWizard.preview">
 		<item value="400" key="height"/>
@@ -28,4 +28,10 @@
 		<item value="false" key="updateTextualMatches"/>
 		<item value="false" key="updateSimilarElements"/>
 	</section>
+<<<<<<< HEAD
+	<section name="ClasspathContainerSelectionPage">
+		<item value="0" key="index"/>
+	</section>
+=======
+>>>>>>> 49cd5bdcceda073690c9b7a81725080d0dbaf261
 </section>

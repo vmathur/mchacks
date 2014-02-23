@@ -1,5 +1,9 @@
 com.android.ide.eclipse.adt.fixLegacyEditors=1
+<<<<<<< HEAD
+com.android.ide.eclipse.adt.sdk=C\:\\Users\\Josh\\Downloads\\adt-bundle-windows-x86_64-20131030\\sdk
+=======
 com.android.ide.eclipse.adt.sdk=C\:\\Users\\Y\\Desktop\\adt-bundle-windows-x86_64-20131030\\adt-bundle-windows-x86_64-20131030\\sdk
+>>>>>>> 49cd5bdcceda073690c9b7a81725080d0dbaf261
 design.palette.flyout.width=233
 design.structure.flyout.state=1
 eclipse.preferences.version=1
