@@ -49,7 +49,6 @@ public class Main extends Activity {
 				System.out.println("button clicked");
 				setContentView(R.layout.result_page);
 				//accept int getRadius.getValue() to set as radius
-				//test
 				new Request().execute(); 
 			}
 		});

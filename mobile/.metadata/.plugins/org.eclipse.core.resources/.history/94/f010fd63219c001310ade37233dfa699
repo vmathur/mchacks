@@ -27,36 +27,33 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.NumberPicker;
 import android.widget.Button;
+import org.json.JSONObject;
 
 public class Main extends Activity {
 	private Button getDealsButton;
-	private NumberPicker getRadius;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		getRadius = (NumberPicker)findViewById(R.id.numberPicker1);
 		getDealsButton = (Button)findViewById(R.id.getdeals);
 		getDealsButton.setOnClickListener(new View.OnClickListener() 
 		{
+			@Override
 			public void onClick(View arg0) {
 				System.out.println("button clicked");
-				setContentView(R.layout.result_page);
-				//accept int getRadius.getValue() to set as radius
-				//test
-				new Request().execute(); 
+<<<<<<< HEAD
+				System.out.println(new Request().execute()); 
 			}
 		});
 		
 	}
 	
-	public static void display(JSONObject newDeals) throws ParserConfigurationException, SAXException, IOException, JSONException{
+	public static void display(JSONObject obj) throws ParserConfigurationException, SAXException, IOException, JSONException{
+		System.out.println(obj);
+		
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = dbFactory.newDocumentBuilder();
 		Document doc = builder.parse(new File("result_page.xml"));  
@@ -68,8 +65,7 @@ public class Main extends Activity {
 		for(int i = 0; i < data.length(); i++){
 		    JSONObject result = data.getJSONObject(i);
 		    System.out.println("Deal: " + result.getJSONObject("deal").getJSONObject("en").getString("short_title") + "Store: " + result.getJSONObject("merchant").getJSONObject("en").getString("name") + "Proximity" + result.getString("Kilometers") + "km" + "Expires: " + result.getJSONObject("deal").getString("expires_at"));		
-			//append to element
-		    root.getElementsByTagName("EditText").item(0).setTextContent("Deal: " + result.getJSONObject("deal").getJSONObject("en").getString("short_title") + "Store: " + result.getJSONObject("merchant").getJSONObject("en").getString("name") + "Proximity" + result.getString("Kilometers") + "km" + "Expires: " + result.getJSONObject("deal").getString("expires_at"));
+			root.getElementsByTagName("EditText").item(0).setTextContent("Deal: " + result.getJSONObject("deal").getJSONObject("en").getString("short_title") + "Store: " + result.getJSONObject("merchant").getJSONObject("en").getString("name") + "Proximity" + result.getString("Kilometers") + "km" + "Expires: " + result.getJSONObject("deal").getString("expires_at"));
 		}
 	}
 
