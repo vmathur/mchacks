@@ -80,7 +80,7 @@ public class Main extends Activity {
 		    //append to element
 		    root.getElementsByTagName("EditText").item(0).appendChild(doc.createTextNode("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + "Distance: " + distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)) + " Expires: " + result.getJSONObject("Deal").getString("expires_at")));
 		    //put deal locations on map
-		    //Map.placeMarker(result);
+		    Map.placeMarker(result);
 		}
 
 	}
