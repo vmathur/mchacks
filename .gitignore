@@ -9,35 +9,25 @@
 *.class
 
 # generated files
-mobile/bin/
+bin/
 gen/
 
 # Local configuration file (sdk path, etc)
 local.properties
 
-*.pydevproject
-.project
-.metadata
-mobile/DealMe/bin/**
-mobile/DealMe/tmp/**
-mobile/DealMe/tmp/**/*
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
+# Eclipse project files
 .classpath
-.settings/
-.loadpath
+.project
 
-# External tool builders
-.externalToolBuilders/
-
-# Locally stored "Eclipse launch configurations"
-*.launch
-
-# CDT-specific
-.cproject
-
-# PDT-specific
-.buildpath
+# Android Studio
+.idea/
+.gradle
+/*/local.properties
+/*/out
+/*/*/build
+/*/*/production
+*.iml
+*.iws
+*.ipr
+*~
+*.swp
