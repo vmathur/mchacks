@@ -16,6 +16,9 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import java.util.*;
+import java.util.HashMap; 
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -89,14 +92,19 @@ public class Main extends Activity implements LocationListener {
 	
 	public static void display(JSONObject newDeals) throws ParserConfigurationException, SAXException, IOException, JSONException{
 		
+<<<<<<< HEAD
+=======
+		//put user location on a map
+		//Map.initializeMap(ShowLocationActivity.getUserPosition());
+
+>>>>>>> 8417aacf5ad371db25812a700352b0e29f386a07
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = dbFactory.newDocumentBuilder();
 		Document doc = builder.parse(new File("result_page.xml"));  
 		Element root = doc.getDocumentElement(); 
-		
+
 		//update xml file with deal values
-		//loop through newDeals.data array
-		JSONArray data = new JSONArray(newDeals.getJSONArray("data"));
+		JSONArray data = newDeals.getJSONArray("data");
 		for(int i = 0; i < data.length(); i++){
 		    JSONObject result = data.getJSONObject(i).getJSONObject("result");
 		    
@@ -104,10 +112,18 @@ public class Main extends Activity implements LocationListener {
 		    String lat2 =  result.getJSONObject("Merchant").getString("latitude");
 		    System.out.println("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + " Expires: " + result.getJSONObject("Deal").getString("expires_at"));	
 		    System.out.println("Distance: "+distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)));
+<<<<<<< HEAD
 		    
 			//append to element
 		    root.getElementsByTagName("EditText").item(0).appendChild(doc.createTextNode("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + "Distance: " + distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)) + " Expires: " + result.getJSONObject("Deal").getString("expires_at")));
+=======
+		    //append to element
+		    root.getElementsByTagName("EditText").item(0).appendChild(doc.createTextNode("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + "Distance: " + distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)) + " Expires: " + result.getJSONObject("Deal").getString("expires_at")));
+		    //put deal locations on map
+		    //Map.placeMarker(result);
+>>>>>>> 8417aacf5ad371db25812a700352b0e29f386a07
 		}
+
 	}
 	
 	private static double distance(double lat1, double lon1, double lat2, double lon2, char unit) {
@@ -139,6 +155,7 @@ public class Main extends Activity implements LocationListener {
 		return true;
 	}
 	
+<<<<<<< HEAD
 	/* Request updates at startup */
 	@Override
 	protected void onResume() {
@@ -169,6 +186,30 @@ public class Main extends Activity implements LocationListener {
 	    // TODO Auto-generated method stub
 
 	  }
+=======
+	private static double distance(double lat1, double lon1, double lat2, double lon2, char unit) {
+	      double theta = lon1 - lon2;
+	      double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+	      dist = Math.acos(dist);
+	      dist = rad2deg(dist);
+	      dist = dist * 60 * 1.1515;
+	      if (unit == 'K') {
+	        dist = dist * 1.609344;
+	      } else if (unit == 'N') {
+	        dist = dist * 0.8684;
+	        }
+	      return (dist);
+	    }
+	 
+	private static double deg2rad(double deg) {
+		 return (deg * Math.PI / 180.0);
+	}
+	 
+	private static double rad2deg(double rad) {
+		 return (rad * 180.0 / Math.PI);
+	}
+	
+>>>>>>> 8417aacf5ad371db25812a700352b0e29f386a07
 	
 	@Override
 	public void onProviderDisabled(String provider) {
