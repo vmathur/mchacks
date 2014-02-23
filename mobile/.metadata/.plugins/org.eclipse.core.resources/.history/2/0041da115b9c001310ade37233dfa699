@@ -60,20 +60,21 @@ public class Main extends Activity implements LocationListener {
 		latituteField = (TextView) findViewById(R.id.TextView05);
 	    longitudeField = (TextView) findViewById(R.id.TextView04);
 	    
-	    locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+		// Get the location manager
+	    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+	    // Define the criteria how to select the locatioin provider -> use
+	    // default
 	    Criteria criteria = new Criteria();
-
 	    provider = locationManager.getBestProvider(criteria, false);
-	    Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);
-	    System.out.println(location);
+	    Location location = locationManager.getLastKnownLocation(provider);
 	    
+	 // Initialize the location fields
 	    if (location != null) {
 	      System.out.println("Provider " + provider + " has been selected.");
 	      onLocationChanged(location);
 	    } else {
 	      latituteField.setText("Location not available");
 	      longitudeField.setText("Location not available");
-	      
 	    }
 	    
 		getRadius = (NumberPicker)findViewById(R.id.numberPicker1);
@@ -88,7 +89,6 @@ public class Main extends Activity implements LocationListener {
 			}
 		});
 	}
-	
 	
 	public static void display(JSONObject newDeals) throws ParserConfigurationException, SAXException, IOException, JSONException{
 		
@@ -177,14 +177,10 @@ public class Main extends Activity implements LocationListener {
 	      return (dist);
 	    }
 	
-//	public void checkIfClose()
-//	{
-//		if (distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0))<.5)
-//		{
-//			
-//			System.out.println("do stuff");
-//		}
-//	}
+	public void checkIfClose()
+	{
+		
+	}
 
 	
 	@Override

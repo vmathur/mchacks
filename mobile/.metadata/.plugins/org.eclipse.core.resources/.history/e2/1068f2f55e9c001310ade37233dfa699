@@ -60,20 +60,39 @@ public class Main extends Activity implements LocationListener {
 		latituteField = (TextView) findViewById(R.id.TextView05);
 	    longitudeField = (TextView) findViewById(R.id.TextView04);
 	    
+		// Get the location manager
 	    locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-	    Criteria criteria = new Criteria();
+	    // Define the criteria how to select the locatioin provider -> use
+	    // default
+	    
+		// List all providers:
+		List<String> providers = locationManager.getAllProviders();
+		for (String provider : providers) {
+			System.out.println(provider);
+		}
 
+		Criteria criteria = new Criteria();
+		//bestProvider = locationManager.getBestProvider(criteria, false);
+		//output.append("\n\nBEST Provider:\n");
+		//printProvider(bestProvider);
+
+		//output.append("\n\nLocations (starting with last known):");
+		//Location location = locationManager.getLastKnownLocation(bestProvider);
+		//printLocation(location);
+	
+	    
+	    
 	    provider = locationManager.getBestProvider(criteria, false);
-	    Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);
+	    Location location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
 	    System.out.println(location);
 	    
+	 // Initialize the location fields
 	    if (location != null) {
 	      System.out.println("Provider " + provider + " has been selected.");
 	      onLocationChanged(location);
 	    } else {
 	      latituteField.setText("Location not available");
 	      longitudeField.setText("Location not available");
-	      
 	    }
 	    
 		getRadius = (NumberPicker)findViewById(R.id.numberPicker1);

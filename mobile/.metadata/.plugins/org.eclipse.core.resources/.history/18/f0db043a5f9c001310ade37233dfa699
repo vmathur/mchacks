@@ -67,6 +67,7 @@ public class Main extends Activity implements LocationListener {
 	    Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);
 	    System.out.println(location);
 	    
+	 // Initialize the location fields
 	    if (location != null) {
 	      System.out.println("Provider " + provider + " has been selected.");
 	      onLocationChanged(location);
