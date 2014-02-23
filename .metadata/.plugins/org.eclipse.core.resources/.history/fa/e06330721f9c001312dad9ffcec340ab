@@ -14,10 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="96dp"
         android:text="Deal Me"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="40dp" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textView1"
@@ -29,14 +28,15 @@
         android:text="Find the hottest local deals"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <NumberPicker
-        android:id="@+id/numberPicker1"
+    <TextView
+        android:id="@+id/TextView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/getdeals"
-        android:layout_centerHorizontal="true"
-
-></NumberPicker>
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_marginBottom="30dp"
+        android:text="Within: "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/getdeals"
@@ -44,28 +44,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:text="Go!" />
+        android:layout_marginBottom="77dp"
+        android:text="Go" />
 
-    <TextView
-        android:id="@+id/TextView01"
+    <NumberPicker
+        android:id="@+id/numberPicker1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/numberPicker1"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_marginBottom="49dp"
-        android:text="Within: "
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/TextView02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/TextView01"
-        android:layout_alignBottom="@+id/TextView01"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_marginRight="24dp"
-        android:text="km"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_above="@+id/getdeals"
+        android:layout_centerHorizontal="true"
 
 </RelativeLayout>
