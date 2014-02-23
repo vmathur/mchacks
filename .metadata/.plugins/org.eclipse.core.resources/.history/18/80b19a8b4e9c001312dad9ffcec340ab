@@ -62,7 +62,7 @@ public class Main extends Activity {
 		Element root = doc.getDocumentElement(); 
 		
 		//put user location on a map
-		//Map.initializeMap(ShowLocationActivity.getUserPosition());
+		Map.initializeMap(ShowLocationActivity.getUserPosition());
 		
 		//update xml file with deal values
 		//loop through newDeals.data array

@@ -61,9 +61,6 @@ public class Main extends Activity {
 		Document doc = builder.parse(new File("result_page.xml"));  
 		Element root = doc.getDocumentElement(); 
 		
-		//put user location on a map
-		//Map.initializeMap(ShowLocationActivity.getUserPosition());
-		
 		//update xml file with deal values
 		//loop through newDeals.data array
 		JSONArray data = new JSONArray(newDeals.getJSONArray("data"));
@@ -72,12 +69,7 @@ public class Main extends Activity {
 		    System.out.println("Deal: " + result.getJSONObject("deal").getJSONObject("en").getString("short_title") + "Store: " + result.getJSONObject("merchant").getJSONObject("en").getString("name") + "Proximity" + result.getString("Kilometers") + "km" + "Expires: " + result.getJSONObject("deal").getString("expires_at"));		
 			//append to element
 		    root.getElementsByTagName("EditText").item(0).appendChild(doc.createTextNode("Deal: " + result.getJSONObject("deal").getJSONObject("en").getString("short_title") + "Store: " + result.getJSONObject("merchant").getJSONObject("en").getString("name") + "Proximity" + result.getString("Kilometers") + "km" + "Expires: " + result.getJSONObject("deal").getString("expires_at")));
-		    //put deal locations on map
-		    Map.placeMarker(result);
 		}
-		
-		
-		
 	}
 
 	@Override
