@@ -1,19 +1,33 @@
-npm-debug.log
-*.log
-mobile/.metadata/**/*
-*.log
-mobile/.metadata/.plugins/org.eclipse.core.resources/.projects/DealMe/.markers.snap
-mobile/.metadata/.log
-mobile/.metadata/.log
-mobile/.metadata/.plugins/org.eclipse.core.resources/.projects/DealMe/.markers.snap
-mobile/.metadata/.plugins/org.eclipse.core.resources/.projects/DealMe/.syncinfo.snap
-mobile/.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap
-mobile/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
-mobile/.metadata/.plugins/org.eclipse.core.resources/.snap
-mobile/DealMe/bin/classes/com/vajy/dealme/R.class
-mobile/DealMe/bin/classes/com/vajy/dealme/R$style.class
-mobile/DealMe/bin/classes/com/vajy/dealme/R$string.class
-mobile/DealMe/bin/classes/com/vajy/dealme/R$menu.class
-mobile/DealMe/bin/classes/com/vajy/dealme/R$drawable.class
-mobile/DealMe/bin/classes/com/vajy/dealme/R$attr.class
-mobile/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Eclipse project files
+.classpath
+.project
+
+# Android Studio
+.idea/
+.gradle
+/*/local.properties
+/*/out
+/*/*/build
+/*/*/production
+*.iml
+*.iws
+*.ipr
+*~
+*.swp
