@@ -35,7 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/getdeals"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+
+></NumberPicker>
 
     <Button
         android:id="@+id/getdeals"
@@ -44,7 +46,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:text="Deal Me!" />
+        android:text="Go!" />
     
     
 
@@ -68,7 +70,5 @@
         android:layout_marginRight="24dp"
         android:text="km"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-    
 
 </RelativeLayout>

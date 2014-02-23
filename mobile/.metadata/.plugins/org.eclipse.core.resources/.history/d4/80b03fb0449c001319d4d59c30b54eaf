@@ -35,7 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/getdeals"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+
+></NumberPicker>
 
     <Button
         android:id="@+id/getdeals"
@@ -44,9 +46,15 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:text="Deal Me!" />
+        android:text="Go!" />
     
-    
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true"
+          android:drawable="@drawable/button_pressed" /> <!-- pressed -->
+    <item android:state_focused="true"
+          android:drawable="@drawable/button_focused" /> <!-- focused -->
+    <item android:drawable="@drawable/button_normal" /> <!-- default -->
+	</selector>
 
     <TextView
         android:id="@+id/TextView01"
@@ -68,7 +76,5 @@
         android:layout_marginRight="24dp"
         android:text="km"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-    
 
 </RelativeLayout>

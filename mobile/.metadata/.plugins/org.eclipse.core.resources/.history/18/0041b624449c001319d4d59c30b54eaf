@@ -18,7 +18,7 @@
         android:layout_marginTop="75dp"
         android:text="Deal Me"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="50dp" />
+        android:textSize="40dp" />
 
     <TextView
         android:id="@+id/textView1"
@@ -35,7 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/getdeals"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+
+></NumberPicker>
 
     <Button
         android:id="@+id/getdeals"
@@ -44,9 +46,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:text="Deal Me!" />
-    
-    
+        android:text="Go!" />
 
     <TextView
         android:id="@+id/TextView01"
@@ -68,7 +68,5 @@
         android:layout_marginRight="24dp"
         android:text="km"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-    
 
 </RelativeLayout>
