@@ -28,7 +28,10 @@
 		<item value="false" key="updateTextualMatches"/>
 		<item value="false" key="updateSimilarElements"/>
 	</section>
+<<<<<<< HEAD
 	<section name="ClasspathContainerSelectionPage">
 		<item value="0" key="index"/>
 	</section>
+=======
+>>>>>>> 49cd5bdcceda073690c9b7a81725080d0dbaf261
 </section>

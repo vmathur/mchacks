@@ -36,7 +36,7 @@ public final class R {
         public static final int getdeals=0x7f080002;
         public static final int linearLayout1=0x7f080004;
         public static final int linearLayout2=0x7f080006;
-        public static final int mainListView=0x7f08000a;
+        public static final int list=0x7f08000a;
         public static final int rowTextView=0x7f08000b;
         public static final int textView1=0x7f080000;
     }
