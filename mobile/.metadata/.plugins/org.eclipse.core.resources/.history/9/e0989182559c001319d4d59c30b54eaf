@@ -9,21 +9,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:text="Deals:" >
+        android:text="The results page" >
 
         <requestFocus />
-    </EditText> 
-  <!--   
+    </EditText>
+
+    
+    
     <TextView
         android:id="@+id/secondLine"
         android:layout_width="fill_parent"
         android:layout_height="26dip"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true" 
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/icon"
         android:ellipsize="marquee"
         android:singleLine="true"
-        android:text="First Result"
-        android:textSize="16sp" />
+        android:text="Description"
+        android:textSize="12sp" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -32,15 +35,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
+        android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
-        android:text="Second Result"
-        android:textSize="16sp" /> -->
+        android:text="Example application"
+        android:textSize="16sp" />
     
-    <TextView 
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:padding="10dp"
-    android:textSize="20sp" >
-        
-</TextView>
 </LinearLayout>
