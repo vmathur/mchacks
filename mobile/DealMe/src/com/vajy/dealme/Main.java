@@ -21,6 +21,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.concurrent.ExecutionException;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -29,6 +31,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.Button;
+import org.json.JSONObject;
 
 public class Main extends Activity {
 	private Button getDealsButton;
@@ -43,20 +46,22 @@ public class Main extends Activity {
 		getDealsButton = (Button)findViewById(R.id.getdeals);
 		getDealsButton.setOnClickListener(new View.OnClickListener() 
 		{
+			@Override
 			public void onClick(View arg0) {
 				System.out.println("button clicked");
-				//TODO Auto-generated method stub
-				display(Http.getNewDeals());
+				new Request().execute(); 
 			}
 		});
+		
 	}
-
-	protected void display(JSONObject newDeals) throws ParserConfigurationException, SAXException, IOException, JSONException {
-		//initialize xml reader
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder builder = dbFactory.newDocumentBuilder();
-		Document doc = builder.parse(new File("result_page.xml"));  
-		Element root = doc.getDocumentElement(); 
+	
+	public static void display(JSONObject newDeals) throws ParserConfigurationException, SAXException, IOException, JSONException{
+		System.out.println(newDeals);
+		
+//		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+//		DocumentBuilder builder = dbFactory.newDocumentBuilder();
+//		Document doc = builder.parse(new File("result_page.xml"));  
+//		Element root = doc.getDocumentElement(); 
 		
 		//update xml file with deal values
 		//loop through newDeals.data array
@@ -64,7 +69,7 @@ public class Main extends Activity {
 		for(int i = 0; i < data.length(); i++){
 		    JSONObject result = data.getJSONObject(i);
 		    System.out.println("Deal: " + result.getJSONObject("deal").getJSONObject("en").getString("short_title") + "Store: " + result.getJSONObject("merchant").getJSONObject("en").getString("name") + "Proximity" + result.getString("Kilometers") + "km" + "Expires: " + result.getJSONObject("deal").getString("expires_at"));		
-			root.getElementsByTagName("EditText").item(0).setTextContent("Deal: " + result.getJSONObject("deal").getJSONObject("en").getString("short_title") + "Store: " + result.getJSONObject("merchant").getJSONObject("en").getString("name") + "Proximity" + result.getString("Kilometers") + "km" + "Expires: " + result.getJSONObject("deal").getString("expires_at"));
+			//root.getElementsByTagName("EditText").item(0).setTextContent("Deal: " + result.getJSONObject("deal").getJSONObject("en").getString("short_title") + "Store: " + result.getJSONObject("merchant").getJSONObject("en").getString("name") + "Proximity" + result.getString("Kilometers") + "km" + "Expires: " + result.getJSONObject("deal").getString("expires_at"));
 		}
 	}
 
