@@ -181,7 +181,13 @@ public class Main extends Activity implements LocationListener {
 		DocumentBuilder builder = dbFactory.newDocumentBuilder();		
 		//Document doc = builder.parse(new File(Main.getFilesDir()+"res/layout/result_page.xml"));  
 		//Element root = doc.getDocumentElement(); 
+		
 
+		
+		Collection<TextView> svr = new ArrayList<TextView>();
+        //svr.add(new SeTexrver());
+
+		
 		
 		//update xml file with deal values
 		JSONArray data = newDeals.getJSONArray("data");
@@ -192,9 +198,9 @@ public class Main extends Activity implements LocationListener {
 		    String lat2 =  result.getJSONObject("Merchant").getString("latitude");
 		    System.out.println("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + " Expires: " + result.getJSONObject("Deal").getString("expires_at"));	
 		    System.out.println("Distance: "+distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)));
-
+		    System.out.println("curLat" + curLat);
 		    //root.getElementsByTagName("EditText").item(0).appendChild(doc.createTextNode("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + "Distance: " + distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)) + " Expires: " + result.getJSONObject("Deal").getString("expires_at")));
-		    checkIfClose(cont, result,distance(curLong,curLat,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)));
+		    checkIfClose(cont, result,distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)));
 		}
 
 

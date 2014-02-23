@@ -25,7 +25,6 @@ import org.xml.sax.SAXException;
 
 import java.util.*;
 import java.net.URL;
-import java.util.List;
 
 import android.content.Intent;
 
@@ -42,10 +41,7 @@ import android.content.Context;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.Button;
 import android.widget.TextView;
@@ -107,71 +103,11 @@ public class Main extends Activity implements LocationListener {
 				System.out.println("button clicked");
 				new Request().execute(); 
 				setContentView(R.layout.result_page);
-				
-				final ListView listview = (ListView) findViewById(R.id.list);
-			    String[] values = new String[] { "Subway", "Zara", "WindowsMobile",
-			        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-			        "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
-			        "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
-			        "Android", "iPhone", "WindowsMobile" };
-
-			    final ArrayList<String> list = new ArrayList<String>();
-			    for (int i = 0; i < values.length; ++i) {
-			      list.add(values[i]);
-			    }
-			    final StableArrayAdapter adapter = new StableArrayAdapter(Main.this,
-			        android.R.layout.simple_list_item_1, list);
-			    listview.setAdapter(adapter);
-				
-			    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-			        @Override
-			        public void onItemClick(AdapterView<?> parent, final View view,
-			            int position, long id) {
-			          final String item = (String) parent.getItemAtPosition(position);
-			          view.animate().setDuration(2000).alpha(0)
-			              .withEndAction(new Runnable() {
-			                @Override
-			                public void run() {
-			                  list.remove(item);
-			                  adapter.notifyDataSetChanged();
-			                  view.setAlpha(1);
-			                }
-			              });
-			        }
-
-			      });
-			    
 				//accept int getRadius.getValue() to set as radius
 			}
 		});
 	}
 	
-	
-	private class StableArrayAdapter extends ArrayAdapter<String> {
-
-	    HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
-	    public StableArrayAdapter(Context context, int textViewResourceId,
-	        List<String> objects) {
-	      super(context, textViewResourceId, objects);
-	      for (int i = 0; i < objects.size(); ++i) {
-	        mIdMap.put(objects.get(i), i);
-	      }
-	    }
-
-	    @Override
-	    public long getItemId(int position) {
-	      String item = getItem(position);
-	      return mIdMap.get(item);
-	    }
-
-	    @Override
-	    public boolean hasStableIds() {
-	      return true;
-	    }
-
-	  }
 	
 	public static void display(JSONObject newDeals) throws ParserConfigurationException, SAXException, IOException, JSONException{
 		
@@ -181,7 +117,13 @@ public class Main extends Activity implements LocationListener {
 		DocumentBuilder builder = dbFactory.newDocumentBuilder();		
 		//Document doc = builder.parse(new File(Main.getFilesDir()+"res/layout/result_page.xml"));  
 		//Element root = doc.getDocumentElement(); 
+		
 
+		
+		Collection<TextView> svr = new ArrayList<TextView>();
+        //svr.add(new SeTexrver());
+
+		
 		
 		//update xml file with deal values
 		JSONArray data = newDeals.getJSONArray("data");
@@ -192,9 +134,9 @@ public class Main extends Activity implements LocationListener {
 		    String lat2 =  result.getJSONObject("Merchant").getString("latitude");
 		    System.out.println("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + " Expires: " + result.getJSONObject("Deal").getString("expires_at"));	
 		    System.out.println("Distance: "+distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)));
-
+		    
 		    //root.getElementsByTagName("EditText").item(0).appendChild(doc.createTextNode("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + "Distance: " + distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)) + " Expires: " + result.getJSONObject("Deal").getString("expires_at")));
-		    checkIfClose(cont, result,distance(curLong,curLat,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)));
+		    checkIfClose(cont, result,distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)));
 		}
 
 
