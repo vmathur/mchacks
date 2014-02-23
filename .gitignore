@@ -1,6 +1,6 @@
 npm-debug.log
 *.log
-mobile/.metadata/**/*
+mobile/.metadata/*
 *.log
 mobile/.metadata/.plugins/org.eclipse.core.resources/.projects/DealMe/.markers.snap
 mobile/.metadata/.log
