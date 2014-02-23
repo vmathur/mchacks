@@ -19,6 +19,7 @@ import org.xml.sax.SAXException;
 import java.util.*;
 import java.util.HashMap; 
 
+import android.content.Intent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,21 +61,20 @@ public class Main extends Activity implements LocationListener {
 		latituteField = (TextView) findViewById(R.id.TextView05);
 	    longitudeField = (TextView) findViewById(R.id.TextView04);
 	    
-		// Get the location manager
-	    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-	    // Define the criteria how to select the locatioin provider -> use
-	    // default
+	    locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 	    Criteria criteria = new Criteria();
+
 	    provider = locationManager.getBestProvider(criteria, false);
-	    Location location = locationManager.getLastKnownLocation(provider);
+	    Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);
+	    System.out.println(location);
 	    
-	 // Initialize the location fields
 	    if (location != null) {
 	      System.out.println("Provider " + provider + " has been selected.");
 	      onLocationChanged(location);
 	    } else {
 	      latituteField.setText("Location not available");
 	      longitudeField.setText("Location not available");
+	      
 	    }
 	    
 		getRadius = (NumberPicker)findViewById(R.id.numberPicker1);
@@ -89,6 +89,7 @@ public class Main extends Activity implements LocationListener {
 			}
 		});
 	}
+	
 	
 	public static void display(JSONObject newDeals) throws ParserConfigurationException, SAXException, IOException, JSONException{
 		
@@ -109,12 +110,16 @@ public class Main extends Activity implements LocationListener {
 		    String lat2 =  result.getJSONObject("Merchant").getString("latitude");
 		    System.out.println("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + " Expires: " + result.getJSONObject("Deal").getString("expires_at"));	
 		    System.out.println("Distance: "+distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)));
-
+		    
+		    
 		    //append to element
 		    root.getElementsByTagName("EditText").item(0).appendChild(doc.createTextNode("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + "Distance: " + distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)) + " Expires: " + result.getJSONObject("Deal").getString("expires_at")));
 		    //put deal locations on map
 		    //Map.placeMarker(result);
+		    
+		    //checkIfClose(result.getJSONObject("Merchant"),location);
 		}
+
 
 	}
 	 
@@ -163,6 +168,7 @@ public class Main extends Activity implements LocationListener {
 	    // TODO Auto-generated method stub
 
 	  }
+	
 	private static double distance(double lat1, double lon1, double lat2, double lon2, char unit) {
 	      double theta = lon1 - lon2;
 	      double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
@@ -176,8 +182,36 @@ public class Main extends Activity implements LocationListener {
 	        }
 	      return (dist);
 	    }
-	 
+	
+	public static void checkIfClose(JSONObject merchant, Location location) throws JSONException
+	{
+		    double long2 = merchant.getDouble("longitude");
+		    double lat2  = merchant.getDouble("longitude");
+	    	
+	    	if (distance(location.getLatitude(),location.getLongitude(),long2,lat2,"K".charAt(0))<.5)
+			{
+				System.out.println("do stuff");
+				//sendAlertToPebble(String title, String body)
+			}
+	    
 
+	}
+	
+	public void sendAlertToPebble(String title, String body) {
+	    final Intent i = new Intent("com.getpebble.action.SEND_NOTIFICATION");
+
+	    final Map data = new HashMap();
+	    data.put("title",title);
+	    data.put("body", body);
+	    final JSONObject jsonData = new JSONObject(data);
+	    final String notificationData = new JSONArray().put(jsonData).toString();
+
+	    i.putExtra("messageType", "PEBBLE_ALERT");
+	    i.putExtra("sender", "MyAndroidApp");
+	    i.putExtra("notificationData", notificationData);
+
+	    sendBroadcast(i);
+	}
 	
 	@Override
 	public void onProviderDisabled(String provider) {
