@@ -5,8 +5,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.net.*;
+
+import android.os.AsyncTask;
+import org.apache.http.StatusLine;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -22,23 +24,29 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.ByteArrayBuffer;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONTokener;
 
 import android.os.Looper;
 
 public class Http 
 {
 	
-	private static String root = "http://deals.yellowapi.com/";
+	private static String root = "http://deals.sandbox.yellowapi.com/";
 	private static String data = "search/";
 	private static String latitude = "45.505768";
 	private static String longitude = "-73.5786841";
-	private static String API_KEY = "tnna9yr2ysxntqxzkvw6aq4k";
+	private static String API_KEY = "mk8cjj6thh84fbn6dgrebpez";
+	
 	private static String URL = root+data+"geo/"+longitude+"/"+latitude+"?lang=en&UID=24&apikey="+API_KEY;
-
-	public static void getNewDeals()
+			
+	
+	
+	public static JSONObject getNewDeals()
 	{
 		System.out.println("yo");
 		System.out.println(URL);
+	    
 
         Thread t = new Thread() 
         {
@@ -63,15 +71,19 @@ public class Http
                     {
                     	System.out.println(response.getStatusLine().getStatusCode());
                     	System.out.println(response.getEntity().getContentType());
-                    	System.out.println(response.getAllHeaders().getClass());
-                    	System.out.println(response);
+                    	System.out.println(response.getAllHeaders());
                     	
-                    	
+                    	BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+                    	StringBuilder builder = new StringBuilder();
+                    	for (String line = null; (line = reader.readLine()) != null;) {
+                    	    builder.append(line).append("\n");
+                    	}
+                    	JSONTokener tokener = new JSONTokener(builder.toString());
+                    	JSONArray finalResult = new JSONArray(tokener);
 
-      
-                    	
-                    	//InputStream in = response.getEntity().getContent(); //Get the data in the entity
-                    	//System.out.println("Response is :"+ readResponse(in));
+                    }
+                    else{
+                    
                     }
 
                 } catch(Exception e) {
@@ -82,8 +94,10 @@ public class Http
         };
 
         t.start();  
-     			
+        return new JSONObject();
 	}
+	
+	
 	
 	public static void sendJson(final String name1, final String value1, final String name2, final String value2, final String URL) 
 	{
