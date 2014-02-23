@@ -1,5 +1,25 @@
 package com.vajy.dealme;
 
+import java.io.File;
+import java.io.IOException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
@@ -10,9 +30,7 @@ import android.view.View;
 import android.widget.Button;
 import org.json.JSONObject;
 
-
 public class Main extends Activity {
-	
 	private Button getDealsButton;
 
 	@Override
@@ -26,14 +44,28 @@ public class Main extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				System.out.println("button clicked");
-				System.out.println(new Request().execute()); 
+				new Request().execute(); 
 			}
 		});
 		
 	}
 	
-	public static void display(JSONObject obj){
-		System.out.println(obj);
+	public static void display(JSONObject newDeals) throws ParserConfigurationException, SAXException, IOException, JSONException{
+		System.out.println(newDeals);
+		
+//		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+//		DocumentBuilder builder = dbFactory.newDocumentBuilder();
+//		Document doc = builder.parse(new File("result_page.xml"));  
+//		Element root = doc.getDocumentElement(); 
+		
+		//update xml file with deal values
+		//loop through newDeals.data array
+		JSONArray data = new JSONArray(newDeals.getJSONArray("data"));
+		for(int i = 0; i < data.length(); i++){
+		    JSONObject result = data.getJSONObject(i);
+		    System.out.println("Deal: " + result.getJSONObject("deal").getJSONObject("en").getString("short_title") + "Store: " + result.getJSONObject("merchant").getJSONObject("en").getString("name") + "Proximity" + result.getString("Kilometers") + "km" + "Expires: " + result.getJSONObject("deal").getString("expires_at"));		
+			//root.getElementsByTagName("EditText").item(0).setTextContent("Deal: " + result.getJSONObject("deal").getJSONObject("en").getString("short_title") + "Store: " + result.getJSONObject("merchant").getJSONObject("en").getString("name") + "Proximity" + result.getString("Kilometers") + "km" + "Expires: " + result.getJSONObject("deal").getString("expires_at"));
+		}
 	}
 
 	@Override

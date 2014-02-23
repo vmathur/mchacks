@@ -9,6 +9,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.*;
 
+import javax.xml.parsers.ParserConfigurationException;
+
 import android.os.AsyncTask;
 
 import org.apache.http.StatusLine;
@@ -25,9 +27,11 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.ByteArrayBuffer;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONTokener;
+import org.xml.sax.SAXException;
 
 import android.os.Looper;
 
@@ -65,8 +69,6 @@ public class Request extends AsyncTask<String, Void, JSONObject> {
              	for (String line = null; (line = reader.readLine()) != null;) {
              	    builder.append(line).append("\n");
              	}
-             	JSONTokener tokener = new JSONTokener(builder.toString());
-             	//JSONArray finalResult = new JSONArray(tokener);
              	JSONObject myObject = new JSONObject(builder.toString());
              	return myObject;
              }
@@ -79,6 +81,20 @@ public class Request extends AsyncTask<String, Void, JSONObject> {
     }
 
     protected void onPostExecute(JSONObject data) {
-    	Main.display(data);
+    	try {
+			Main.display(data);
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }
