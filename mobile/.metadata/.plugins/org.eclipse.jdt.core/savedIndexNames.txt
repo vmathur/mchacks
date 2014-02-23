@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 INDEX VERSION 1.126+C:\Users\ARTHUR\Documents\GitHub\mchacks\mobile\.metadata\.plugins\org.eclipse.jdt.core
 3746699282.index
 129299257.index
 765655678.index
+=======
+INDEX VERSION 1.126+C:\Users\Y\Documents\GitHub\mchacks\mobile\.metadata\.plugins\org.eclipse.jdt.core
+3098636012.index
+1969296749.index
+877685937.index
+>>>>>>> 5861de21c9456f6f81a2edf7ac04530cc6c2d64c
