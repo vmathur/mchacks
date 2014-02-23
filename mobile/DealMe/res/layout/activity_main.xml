@@ -23,7 +23,7 @@
         android:id="@+id/TextView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/numberPicker1"
+        android:layout_above="@+id/getdeals"
         android:layout_alignLeft="@+id/textView1"
         android:layout_marginBottom="49dp"
         android:text="Within: "
@@ -51,14 +51,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="60dp" />
 
-    <NumberPicker
-        android:id="@+id/numberPicker1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/getdeals"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp" />
-
     <Button
         android:id="@+id/getdeals"
         android:layout_width="wrap_content"
@@ -68,7 +60,7 @@
         android:layout_toLeftOf="@+id/TextView02"
         android:text="Go"
         android:textSize="60dp" />
-    
+
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
@@ -118,6 +110,16 @@
             android:textSize="20dip" >
         </TextView>
     </LinearLayout>
-    
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/getdeals"
+        android:layout_alignTop="@+id/TextView02"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:inputType="number"
+        android:width="60dp" />
 
 </RelativeLayout>

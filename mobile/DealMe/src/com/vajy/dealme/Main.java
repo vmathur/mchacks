@@ -17,7 +17,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import java.util.*;
-import java.util.HashMap; 
 
 import android.content.Intent;
 
@@ -34,6 +33,7 @@ import android.content.Context;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.Button;
@@ -47,7 +47,7 @@ import android.location.LocationManager;
 
 public class Main extends Activity implements LocationListener {
 	private Button getDealsButton;
-	private NumberPicker getRadius;
+	private EditText getRadius;
 	private LocationManager locationManager;
 	private String provider;
 	private TextView latituteField;
@@ -77,14 +77,14 @@ public class Main extends Activity implements LocationListener {
 	      
 	    }
 	    
-		getRadius = (NumberPicker)findViewById(R.id.numberPicker1);
+		getRadius = (EditText)findViewById(R.id.editText1);
 		getDealsButton = (Button)findViewById(R.id.getdeals);
 		getDealsButton.setOnClickListener(new View.OnClickListener() 
 		{
 			public void onClick(View arg0) {
 				System.out.println("button clicked");
 				setContentView(R.layout.result_page);
-				//accept int getRadius.getValue() to set as radius
+				//accept int getRadius.getText() to set as radius
 				new Request().execute(); 
 			}
 		});
@@ -92,9 +92,6 @@ public class Main extends Activity implements LocationListener {
 	
 	
 	public static void display(JSONObject newDeals) throws ParserConfigurationException, SAXException, IOException, JSONException{
-		
-		//put user location on a map
-		//Map.initializeMap(ShowLocationActivity.getUserPosition());
 
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = dbFactory.newDocumentBuilder();
@@ -109,18 +106,13 @@ public class Main extends Activity implements LocationListener {
 		    String long2 =  result.getJSONObject("Merchant").getString("longitude");
 		    String lat2 =  result.getJSONObject("Merchant").getString("latitude");
 		    System.out.println("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + " Expires: " + result.getJSONObject("Deal").getString("expires_at"));	
-		    System.out.println("Distance: "+distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)));
-		    
+		    System.out.println("Distance: "+distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)));		    
 		    
 		    //append to element
 		    root.getElementsByTagName("EditText").item(0).appendChild(doc.createTextNode("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + "Distance: " + distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)) + " Expires: " + result.getJSONObject("Deal").getString("expires_at")));
-		    //put deal locations on map
-		    //Map.placeMarker(result);
 		    
 		    //checkIfClose(result.getJSONObject("Merchant"),location);
 		}
-
-
 	}
 	 
 	private static double deg2rad(double deg) {
