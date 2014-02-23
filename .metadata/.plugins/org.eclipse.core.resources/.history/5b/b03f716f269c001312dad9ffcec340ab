@@ -55,7 +55,7 @@ public class Main extends Activity {
 	}
 	
 	public static void display(JSONObject newDeals) throws ParserConfigurationException, SAXException, IOException, JSONException{
-		//change page
+		System.out.println(newDeals);
 		
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = dbFactory.newDocumentBuilder();

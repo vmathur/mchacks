@@ -47,7 +47,6 @@ public class Main extends Activity {
 		{
 			public void onClick(View arg0) {
 				System.out.println("button clicked");
-				//accept int getRadius.getValue() to set as radius
 				new Request().execute(); 
 			}
 		});
@@ -55,7 +54,7 @@ public class Main extends Activity {
 	}
 	
 	public static void display(JSONObject newDeals) throws ParserConfigurationException, SAXException, IOException, JSONException{
-		//change page
+		System.out.println(newDeals);
 		
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = dbFactory.newDocumentBuilder();
