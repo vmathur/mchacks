@@ -1,12 +1,4 @@
 
-McHacks
+DealMe
 =======
-..my bad... vishal
-
-holla - Vishal
-
-Using VIM! - Arthur
-
-Hello Montreal - Josh
-
-prap prap prap - Yannick
+DealMe is an Android app that lets you find deals close by to you!
