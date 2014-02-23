@@ -69,6 +69,8 @@ public class Request extends AsyncTask<String, Void, JSONObject> {
              	for (String line = null; (line = reader.readLine()) != null;) {
              	    builder.append(line).append("\n");
              	}
+             	JSONTokener tokener = new JSONTokener(builder.toString());
+             	//JSONArray finalResult = new JSONArray(tokener);
              	JSONObject myObject = new JSONObject(builder.toString());
              	return myObject;
              }
