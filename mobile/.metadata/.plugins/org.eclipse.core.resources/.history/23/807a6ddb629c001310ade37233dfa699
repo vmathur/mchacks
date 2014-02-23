@@ -117,7 +117,7 @@ public class Main extends Activity implements LocationListener {
 		    //put deal locations on map
 		    //Map.placeMarker(result);
 		    
-		    //checkIfClose(result.getJSONObject("Merchant"),location);
+		    checkIfClose(result.getJSONObject("Merchant"),);
 		}
 
 

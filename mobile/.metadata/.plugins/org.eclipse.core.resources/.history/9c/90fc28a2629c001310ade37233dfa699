@@ -48,8 +48,8 @@ import android.location.LocationManager;
 public class Main extends Activity implements LocationListener {
 	private Button getDealsButton;
 	private NumberPicker getRadius;
-	private LocationManager locationManager;
-	private String provider;
+	private static LocationManager locationManager;
+	private static String provider;
 	private TextView latituteField;
 	private TextView longitudeField;
 	
@@ -117,7 +117,7 @@ public class Main extends Activity implements LocationListener {
 		    //put deal locations on map
 		    //Map.placeMarker(result);
 		    
-		    //checkIfClose(result.getJSONObject("Merchant"),location);
+		    checkIfClose(result.getJSONObject("Merchant"));
 		}
 
 
@@ -183,10 +183,15 @@ public class Main extends Activity implements LocationListener {
 	      return (dist);
 	    }
 	
-	public static void checkIfClose(JSONObject merchant, Location location) throws JSONException
+	public static void checkIfClose(JSONObject merchant) throws JSONException
 	{
+	    locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+	    Criteria criteria = new Criteria();
+	    provider = locationManager.getBestProvider(criteria, false);
+	    Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);		
+
 		    double long2 = merchant.getDouble("longitude");
-		    double lat2  = merchant.getDouble("longitude");
+		    double lat2  = merchant.getDouble("latitude");
 	    	
 	    	if (distance(location.getLatitude(),location.getLongitude(),long2,lat2,"K".charAt(0))<.5)
 			{
@@ -194,7 +199,6 @@ public class Main extends Activity implements LocationListener {
 				//sendAlertToPebble(String title, String body)
 			}
 	    
-
 	}
 	
 	public void sendAlertToPebble(String title, String body) {

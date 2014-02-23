@@ -19,7 +19,6 @@ import org.xml.sax.SAXException;
 import java.util.*;
 import java.util.HashMap; 
 
-import android.content.Intent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -110,16 +109,12 @@ public class Main extends Activity implements LocationListener {
 		    String lat2 =  result.getJSONObject("Merchant").getString("latitude");
 		    System.out.println("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + " Expires: " + result.getJSONObject("Deal").getString("expires_at"));	
 		    System.out.println("Distance: "+distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)));
-		    
-		    
+
 		    //append to element
 		    root.getElementsByTagName("EditText").item(0).appendChild(doc.createTextNode("Deal: " + result.getJSONObject("Deal").getJSONObject("Translation").getJSONObject("en").getString("short_title") + " Store: " + result.getJSONObject("Merchant").getJSONObject("Translation").getJSONObject("en").getString("name") + "Distance: " + distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0)) + " Expires: " + result.getJSONObject("Deal").getString("expires_at")));
 		    //put deal locations on map
 		    //Map.placeMarker(result);
-		    
-		    //checkIfClose(result.getJSONObject("Merchant"),location);
 		}
-
 
 	}
 	 
@@ -183,35 +178,26 @@ public class Main extends Activity implements LocationListener {
 	      return (dist);
 	    }
 	
-	public static void checkIfClose(JSONObject merchant, Location location) throws JSONException
+	public void checkIfClose(JSONObject obj)
 	{
-		    double long2 = merchant.getDouble("longitude");
-		    double lat2  = merchant.getDouble("longitude");
+	    locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+	    Criteria criteria = new Criteria();
+	    provider = locationManager.getBestProvider(criteria, false);
+	    Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);		
+	    
+	    for()
+	    {
+		    double long2 = 1.3;
+		    double lat2  = 2.9;
 	    	
-	    	if (distance(location.getLatitude(),location.getLongitude(),long2,lat2,"K".charAt(0))<.5)
+	    	if (distance(-73.5786841,45.505768,Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0))<.5)
 			{
 				System.out.println("do stuff");
-				//sendAlertToPebble(String title, String body)
 			}
-	    
+	    }
 
 	}
-	
-	public void sendAlertToPebble(String title, String body) {
-	    final Intent i = new Intent("com.getpebble.action.SEND_NOTIFICATION");
 
-	    final Map data = new HashMap();
-	    data.put("title",title);
-	    data.put("body", body);
-	    final JSONObject jsonData = new JSONObject(data);
-	    final String notificationData = new JSONArray().put(jsonData).toString();
-
-	    i.putExtra("messageType", "PEBBLE_ALERT");
-	    i.putExtra("sender", "MyAndroidApp");
-	    i.putExtra("notificationData", notificationData);
-
-	    sendBroadcast(i);
-	}
 	
 	@Override
 	public void onProviderDisabled(String provider) {

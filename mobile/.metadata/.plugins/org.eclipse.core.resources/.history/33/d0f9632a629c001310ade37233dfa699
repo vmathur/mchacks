@@ -117,7 +117,7 @@ public class Main extends Activity implements LocationListener {
 		    //put deal locations on map
 		    //Map.placeMarker(result);
 		    
-		    //checkIfClose(result.getJSONObject("Merchant"),location);
+		    checkIfClose(result.getJSONObject("Merchant"));
 		}
 
 
@@ -183,12 +183,17 @@ public class Main extends Activity implements LocationListener {
 	      return (dist);
 	    }
 	
-	public static void checkIfClose(JSONObject merchant, Location location) throws JSONException
+	public void checkIfClose(JSONObject merchant)
 	{
+	    locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+	    Criteria criteria = new Criteria();
+	    provider = locationManager.getBestProvider(criteria, false);
+	    Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);		
+
 		    double long2 = merchant.getDouble("longitude");
-		    double lat2  = merchant.getDouble("longitude");
+		    double lat2  = merchant.getDouble("latitude");
 	    	
-	    	if (distance(location.getLatitude(),location.getLongitude(),long2,lat2,"K".charAt(0))<.5)
+	    	if (distance(location.getLatitude(),location.getLongitude(),Double.parseDouble(long2),Double.parseDouble(lat2),"K".charAt(0))<.5)
 			{
 				System.out.println("do stuff");
 				//sendAlertToPebble(String title, String body)
