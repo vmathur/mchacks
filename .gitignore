@@ -1,19 +1,43 @@
-npm-debug.log
-*.log
-mobile/.metadata/*
-*.log
-mobile/.metadata/.plugins/org.eclipse.core.resources/.projects/DealMe/.markers.snap
-mobile/.metadata/.log
-mobile/.metadata/.log
-mobile/.metadata/.plugins/org.eclipse.core.resources/.projects/DealMe/.markers.snap
-mobile/.metadata/.plugins/org.eclipse.core.resources/.projects/DealMe/.syncinfo.snap
-mobile/.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap
-mobile/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
-mobile/.metadata/.plugins/org.eclipse.core.resources/.snap
-mobile/DealMe/bin/classes/com/vajy/dealme/R.class
-mobile/DealMe/bin/classes/com/vajy/dealme/R$style.class
-mobile/DealMe/bin/classes/com/vajy/dealme/R$string.class
-mobile/DealMe/bin/classes/com/vajy/dealme/R$menu.class
-mobile/DealMe/bin/classes/com/vajy/dealme/R$drawable.class
-mobile/DealMe/bin/classes/com/vajy/dealme/R$attr.class
-mobile/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+mobile/bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+*.pydevproject
+.project
+.metadata
+mobile/DealMe/bin/**
+mobile/DealMe/tmp/**
+mobile/DealMe/tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
