@@ -57,7 +57,7 @@ public class Main extends Activity implements LocationListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		latituteField = (TextView) findViewById(R.id.TextView05);
+		latituteField = (TextView) findViewById(R.id.TextView02);
 	    longitudeField = (TextView) findViewById(R.id.TextView04);
 	    
 		// Get the location manager
@@ -149,8 +149,8 @@ public class Main extends Activity implements LocationListener {
 
 	@Override
 	  public void onLocationChanged(Location location) {
-	    double lat = (double) (location.getLatitude());
-	    double lng = (double) (location.getLongitude());
+	    int lat = (int) (location.getLatitude());
+	    int lng = (int) (location.getLongitude());
 	    double [] lnglat = new double[2];
 	    lnglat[0] = lng;
 	    lnglat[1] = lat;
