@@ -9993,3 +9993,16 @@ Caused by: org.eclipse.core.internal.resources.ResourceException: Resource is ou
 	at org.eclipse.core.internal.resources.File.getContents(File.java:278)
 	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:49)
 	... 15 more
+
+!ENTRY org.eclipse.core.jobs 4 2 2014-02-24 11:10:46.051
+!MESSAGE An internal error occurred during: "Periodic workspace save.".
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 15, new: 2). Location: /Users/vishal/Hackathon/mchacks/mobile/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:63)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1564)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1228)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1220)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1197)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1109)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
